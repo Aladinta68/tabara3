@@ -26,13 +26,16 @@
 }
 
 @media screen and (max-width:1200px) {
-    .search select {
+    .search form .mb-3{
+        width: 100% !important;
+    }
+    .search form select {
         width: 100% !important;
     }
 }
 
 @media screen and (max-width:1200px) {
-    .search button {
+    .search form button {
         width: 100% !important;
     }
 }
@@ -209,7 +212,7 @@ button.addnewmotabari3 img {
 
 .headersearch {
     width: 100%;
-    height: 400px;
+    height: auto;
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -217,6 +220,8 @@ button.addnewmotabari3 img {
 }
 
 .search {
+    margin-top: 20px;
+    height: auto;
     background-color: white;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     height: auto;
@@ -230,7 +235,7 @@ button.addnewmotabari3 img {
 
 .searchtitle {
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     width: auto;
     height: auto;
     display: flex;
@@ -249,23 +254,31 @@ button.addnewmotabari3 img {
     flex-flow: wrap;
     margin-bottom: 20px;
 }
-
+.searchinput form{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-flow: wrap;
+    margin-bottom: 20px;
+}
 .search select {
     margin-left: 5px;
     margin-top: 5px;
     cursor: pointer;
-    width: 150px;
+    width: 160px;
     height: 45px;
     border-radius: 5px;
     font-size: 22px;
     box-sizing: border-box;
     border: 1px solid #ced4da;
 }
-
 .search button {
     margin-top: 5px;
     cursor: pointer;
-    width: 120px;
+    width: 160px;
     height: 45px;
     border-radius: 5px;
     border: none;
@@ -273,25 +286,20 @@ button.addnewmotabari3 img {
     color: white;
     background-color: rgb(233, 44, 44);
     transition: 0.5s ease-in;
-
 }
-
 .search button:hover {
     background-color: rgb(250, 17, 17);
 }
-
 .search button.searchmotaba {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
-
 .search button.searchmotaba img {
     width: 20px;
     margin-right: 10px;
 }
-
 .containerr {
     width: 100%;
     height: auto;

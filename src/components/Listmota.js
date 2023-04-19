@@ -1,14 +1,14 @@
 import React from 'react'
 import Cardmota from './Cardmota'
-const Listmota = ({personnesdata}) => {
+const Listmota = ({listdonors}) => {
 
   return (
     <div className='containerr'>
 {
-  personnesdata.length >= 1 ?(
-    personnesdata.map((per)=>{
+  listdonors.length >= 1 ?(
+    listdonors.map((onedonor)=>{
       return(
-        <Cardmota key={per.id} per={per} />
+        <Cardmota key={onedonor.id}  onedonor={onedonor} />
       )
     })
   ) :<h2>لا يوجد متبرع</h2>

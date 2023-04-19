@@ -6,7 +6,20 @@ import bloddonation2 from '../components/images/bloddonation2.png'
 import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade';
 
-const Home = ({ personnesdata }) => {
+const Home = ({ adddonors,getdonors,wilayas, blods, getalldairaofwilaya, dairas }) => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const formData = Object.fromEntries(data.entries());
+        console.log(formData)
+        adddonors(formData);
+        setShow(false);
+      };
+
+    const handlewilaya = (e) => {
+        const getwilayaid = e.target.value;
+        getalldairaofwilaya(getwilayaid)
+    }
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -25,7 +38,7 @@ const Home = ({ personnesdata }) => {
                         </Fade>
                     </div>
                 </div>
-                <Header personnesdata={personnesdata} />
+                <Header getdonors={getdonors} wilayas={wilayas} blods={blods} dairas={dairas} getalldairaofwilaya={getalldairaofwilaya} />
                 <div className='homedescrib'>
                     <div className='homedescribtop'>
                         <Fade right><h1>الفوائد الصحية عند التبرع بالدم</h1></Fade>
@@ -50,75 +63,105 @@ const Home = ({ personnesdata }) => {
             </div>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title className='modalheader'>التسجيل كمتبرع</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>فصيلة الدم </Form.Label>
-                            <Form.Select aria-label="Default select example">
-                            <option selected disabled>فصيلة الدم </option>
-                            {
-                                personnesdata.length >= 1 ?(
-                                  personnesdata.map((per)=>{
-                                    return(
-                                      <option key={per.id}>{per.blod}</option>
-                                    )
-                                  })
-                                ) :<option></option>
-                              }
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                            <Form.Label>الولاية</Form.Label>
-                            <Form.Select aria-label="Default select example">
-                            <option selected disabled>الولاية</option>
-                            {
-                                personnesdata.length >= 1 ?(
-                                  personnesdata.map((per)=>{
-                                    return(
-                                      <option key={per.id}>{per.wilaya}</option>
-                                    )
-                                  })
-                                ) :<option></option>
-                              }
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-                            <Form.Label> الدائرة</Form.Label>
-                            <Form.Select aria-label="Default select example">
-                            <option selected disabled>الدائرة</option>
-                            {
-                                personnesdata.length >= 1 ?(
-                                  personnesdata.map((per)=>{
-                                    return(
-                                      <option key={per.id}>{per.daira}</option>
-                                    )
-                                  })
-                                ) :<option></option>
-                              }
-                            </Form.Select>
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
-                            <Form.Label>رقم الهاتف</Form.Label>
-                            <Form.Control
-                                type="number"
-                                placeholder=""
-                                autoFocus
-                            />
-                        </Form.Group>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        غلق
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        التسجيل
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+        <Form onSubmit={handleSubmit}>
+
+          <Modal.Header closeButton>
+            <Modal.Title className='modalheader'>التسجيل كمتبرع</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>فصيلة الدم </Form.Label>
+              <Form.Select name='blood' aria-label="Default select example" required>
+                <option value='' selected disabled>فصيلة الدم </option>
+                {
+                  blods.length >= 1 ? (
+                    blods.map((bld) => {
+                      return (
+                        <option key={bld.id} value={bld.id}>{bld.type}</option>
+                      )
+                    })
+                  ) : <option></option>
+                }
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+              <Form.Label>الولاية</Form.Label>
+              <Form.Select onChange={(e) => handlewilaya(e)} name='wilaya' aria-label="Default select example" required>
+                <option value='' selected disabled>الولاية</option>
+                {
+                  wilayas.length >= 1 ? (
+                    wilayas.map((wil) => {
+                      return (
+                        <option value={wil.number} key={wil.number}>{wil.name}</option>
+                      )
+                    })
+                  ) : <option></option>
+                }
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+              <Form.Label> الدائرة</Form.Label>
+              <Form.Select name='daiira' aria-label="Default select example">
+                <option selected disabled>الدائرة</option>
+                {
+                  dairas.length >= 1 ? (
+                    dairas.map((dai) => {
+                      return (
+                        <option key={dai.number} value={dai.number}>{dai.name}</option>
+                      )
+                    })
+                  ) : <option></option>
+                }
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
+              <Form.Label>امايل</Form.Label>
+              <Form.Control
+                id="email"
+                name="email"
+                type="email"
+                placeholder=""
+                autoFocus
+                required
+                autocomplete="current-email"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
+              <Form.Label>كلمة السر</Form.Label>
+              <Form.Control
+                required
+                id="password"
+                name="password"
+                type="password"
+                placeholder=""
+                autoFocus
+                autocomplete="current-password"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput6">
+              <Form.Label>رقم الهاتف</Form.Label>
+              <Form.Control
+                required
+                id="n_tel"
+                name="n_tel"
+                type="number"
+                placeholder=""
+                autoFocus
+                autocomplete="current-phonenumber"
+              />
+            </Form.Group>
+
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              غلق
+            </Button>
+            <Button variant="primary" type="submit">
+              التسجيل
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal >
         </>
     )
 }
