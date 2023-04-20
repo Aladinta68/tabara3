@@ -1,11 +1,11 @@
 import React from 'react'
-import logo from '../components/images/logo.png'
+import newlogo from '../components/images/newlogo.png'
 import Fade from 'react-reveal/Fade';
 
 const Footerr = () => {
   return (
     <div className='footterr'>
-      <Fade right><div className='footerlogo'>tabara3<img src={logo} />
+      <Fade right><div className='footerlogo'>tabara3<img src={newlogo} />
       </div></Fade>
       <div className='footerdescription'>
         <Fade right><p>هذا الموقع الجزائري يساعد المحتاجين إلى الدم في العثور على المتبرعين بكل سهولة وفي منطقتهم، هذا الموقع صدقة جارية، يرجى الدعاء لصاحبه ولكل من ساعد في تحقيقه بالرحمة والمغفرة.</p></Fade>

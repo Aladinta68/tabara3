@@ -2,84 +2,69 @@
     .box {
         width: 90% !important;
     }
-}
 
-@media screen and (max-width:1200px) {
     .me-auto {
         display: flex;
         flex-direction: column !important;
         justify-content: flex-start !important;
         align-items: flex-start !important;
     }
-}
 
-@media screen and (max-width:1200px) {
     .addnewmotabari3 {
         width: 100% !important;
+        margin-bottom: 10px;
     }
-}
 
-@media screen and (max-width:1200px) {
+    .login {
+        width: 100% !important;
+    }
+
     .search {
         width: 80% !important;
     }
-}
 
-@media screen and (max-width:1200px) {
-    .search form .mb-3{
+    .search form .mb-3 {
         width: 100% !important;
     }
+
     .search form select {
         width: 100% !important;
     }
-}
 
-@media screen and (max-width:1200px) {
     .search form button {
         width: 100% !important;
     }
-}
 
-@media screen and (max-width:1200px) {
     .footerdescription {
         height: auto !important;
     }
-}
 
-@media screen and (max-width:1200px) {
     .homemainn {
         height: 800px !important;
         display: flex;
         flex-direction: column-reverse !important;
         text-align: center;
     }
+
     .homemaintext .homebutton {
         display: flex;
         justify-content: center !important;
     }
-}
 
-@media screen and (max-width:1200px) {
+    .homemaintext .homebutton button.addnewmotabari3 {
+        width: 230px !important;
+    }
+
     .homemaintext {
         width: 100% !important;
     }
-}
 
-@media screen and (max-width:1200px) {
-    .homemaintext .homebutton {
-        width: 50% !important;
-    }
-}
-
-@media screen and (max-width:1200px) {
     .homedescribbottm {
         display: flex;
         flex-direction: column !important;
         text-align: right !important;
     }
-}
 
-@media screen and (max-width:1200px) {
     .homedescribleft {
         width: 100% !important;
         display: flex;
@@ -87,18 +72,15 @@
         justify-content: flex-start;
         align-items: flex-start;
     }
-}
 
-@media screen and (max-width:1200px) {
     .homedescribleft ul {
         width: 100%;
         margin-right: 10px;
     }
 }
 
-
 * {
-    font-family: 'Noto Kufi Arabic', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif !important;
 }
 
 .me-auto {
@@ -129,7 +111,7 @@
 }
 
 .navlogo img {
-    height: 50px;
+height: 65px;
 }
 
 .navlink {
@@ -168,6 +150,7 @@
 
 button.addnewmotabari3 {
     transition: 0.5s ease-in;
+    margin-left: 10px;
     font-size: 18px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border: none;
@@ -181,10 +164,46 @@ button.addnewmotabari3 {
 button.addnewmotabari3:hover {
     background-color: rgb(247, 15, 15);
 }
-button.addnewmotabari3:active{
+
+button.addnewmotabari3:active {
     background-color: rgb(247, 15, 15) !important;
+}
+
+button.login {
+    transition: all 0.5s ease-in;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: none;
+    display: flex;
+    font-weight: 600;
+    flex-direction: row;
+    justify-content: center;
+    color: rgb(218, 42, 42);
+    align-items: center;
+    background-color: white;
+    border: 2px solid rgb(218, 42, 42);
+    height: 40px;
 
 }
+
+button.login img {
+    height: 23px;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+
+button.login:active {
+    color: rgb(218, 42, 42) !important;
+    background-color: white !important;
+    border: 2px solid rgb(255, 0, 0) !important;
+
+}
+
+button.login:hover {
+    border: 2px solid rgb(255, 0, 0) !important;
+    color: rgb(255, 0, 0);
+    background-color: white !important;
+}
+
 button.searchblod {
     transition: all 0.5s ease-in;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -204,9 +223,11 @@ button.searchblod:hover {
     border: 2px solid rgb(218, 42, 42) !important;
     background-color: rgb(218, 42, 42);
 }
-button.searchblod:active{
+
+button.searchblod:active {
     background-color: rgb(218, 42, 42) !important;
 }
+
 button.addnewmotabari3 img {
     height: 23px;
     margin-right: 10px;
@@ -257,7 +278,8 @@ button.addnewmotabari3 img {
     flex-flow: wrap;
     margin-bottom: 20px;
 }
-.searchinput form{
+
+.searchinput form {
     width: auto;
     height: auto;
     display: flex;
@@ -267,6 +289,7 @@ button.addnewmotabari3 img {
     flex-flow: wrap;
     margin-bottom: 20px;
 }
+
 .search select {
     margin-left: 5px;
     margin-top: 5px;
@@ -278,6 +301,7 @@ button.addnewmotabari3 img {
     box-sizing: border-box;
     border: 1px solid #ced4da;
 }
+
 .search button {
     margin-top: 5px;
     cursor: pointer;
@@ -290,19 +314,23 @@ button.addnewmotabari3 img {
     background-color: rgb(233, 44, 44);
     transition: 0.5s ease-in;
 }
+
 .search button:hover {
     background-color: rgb(250, 17, 17);
 }
+
 .search button.searchmotaba {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
+
 .search button.searchmotaba img {
     width: 20px;
     margin-right: 10px;
 }
+
 .containerr {
     width: 100%;
     height: auto;
@@ -386,7 +414,7 @@ button.addnewmotabari3 img {
 .footterr {
     width: 100%;
     height: auto;
-    background-color: rgba(51, 23, 23, 0.911);
+    background-color: #E32636;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -404,8 +432,8 @@ button.addnewmotabari3 img {
 }
 
 .footerlogo img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
 }
 
 .footerdescription {
@@ -422,7 +450,7 @@ button.addnewmotabari3 img {
 .footercopyright {
     width: 100%;
     height: 50px;
-    background-color: rgb(71, 24, 24);
+    background-color: #D2122E;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -488,6 +516,7 @@ button.addnewmotabari3 img {
     flex-direction: row;
     align-items: center;
 }
+
 .homemaintext .homebutton button {
     margin-left: 30px;
     width: 230px !important;
@@ -571,9 +600,81 @@ option {
 .mb-3 {
     color: rgb(163, 38, 38) !important;
 }
-.thereisnomotabari3{
+
+.thereisnomotabari3 {
     height: 300px !important;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.thereisnomotabari3 h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 50px !important;
+}
+
+.forgetpassworddiv {
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.buttonaddmotabari3form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.buttonaddmotabari3form button {
+    height: 40px !important;
+    width: 100%;
+}
+
+.buttonaddmotabari3form .addmotabari3buttonadd {
+    background-color: rgb(255, 61, 61);
+    border: none;
+    transition: all 0.5s ease-in;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.buttonaddmotabari3form .addmotabari3buttonadd:hover {
+    background-color: rgb(252, 35, 35);
+    border: none;
+}
+
+.buttonaddmotabari3form .addmotabari3buttonadd:active {
+    background-color: rgb(252, 35, 35);
+    border: none;
+}
+
+.forgetpassword {
+    text-decoration: none;
+    color: rgb(228, 20, 20);
+    font-size: 16px;
+    transition: all 0.5s ease-in;
+    font-weight: 400;
+}
+
+.forgetpassword:hover {
+    color: rgb(173, 1, 1);
+}
+
+.divyoudonthavecompte {
+    font-size: 18px !important;
+}
+
+.signupifyoudonthave {
+    transition: all 0.5s ease-in;
+    text-decoration: none;
+    color: rgb(228, 20, 20);
+}
+
+.signupifyoudonthave:hover {
+    color: rgb(173, 1, 1) !important;
+}
+.navbar-toggler {
+    color: rgb(241, 241, 241);
 }

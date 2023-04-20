@@ -59,6 +59,7 @@ const adddonors = async (data) =>{
   }
 
   useEffect(() => {
+    adddonors()
     getlistdonors()
     getallwilaya()
     getallblod()

@@ -1,14 +1,27 @@
 import React, { useState } from 'react'
-import { Button, Form, Container, Nav, Navbar, Modal } from 'react-bootstrap'
-import logo from '../components/images/logo.png'
+import { Button, Form, Container, Nav, Navbar, Modal, ModalBody } from 'react-bootstrap'
+import newlogo from '../components/images/newlogo.png'
+import sortir from'../components/images/sortir.png'
 import addmota from '../components/images/addmota.png'
 import { Link } from 'react-router-dom'
+import Alert from 'react-bootstrap/Alert';
 
 
 const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
 
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmitt = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
+
   const handleSubmit = (e) => {
-    e.preventDefault();
     const data = new FormData(e.target);
     const formData = Object.fromEntries(data.entries());
     console.log(formData)
@@ -23,23 +36,29 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () => setShow2(true);
   return (
     <>
       <div>
         <Navbar bg="light" className='navvbarr' expand="lg">
           <Container>
-            <Link to={'/'} className='navlink3'><div className='navlogo'>tabara3<img src={logo} /></div></Link>
+            <Link to={'/'} className='navlink3'><div className='navlogo'>tabara3<img src={newlogo} /></div></Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Link to={'/'} className='navlink2'>الرئيسية</Link>
                 <Link to={'/listeofmotabari3in'} className='navlink' >قائمة المتبرعين</Link>
                 <Button className='addnewmotabari3' onClick={handleShow}>التسجيل كمتبرع<img src={addmota} /></Button>
+                <Button className='login' onClick={handleShow2}>  الدخول للحساب<img src={sortir} /></Button>
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
       </div>
+
 
       <Modal show={show} onHide={handleClose}>
         <Form onSubmit={handleSubmit}>
@@ -131,15 +150,46 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
               />
             </Form.Group>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              غلق
-            </Button>
-            <Button variant="primary" type="submit">
-              التسجيل
-            </Button>
+          <Modal.Footer className='buttonaddmotabari3form'>
+            <Button type="submit" className='addmotabari3buttonadd'>التسجيل</Button>
           </Modal.Footer>
-        </Form>
+          </Form>
+      </Modal >
+
+      <Modal show={show2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+          <Modal.Title className='modalheader'>تسجيل الدخول</Modal.Title>
+        </Modal.Header>
+        <ModalBody>
+          <Alert variant='danger'>
+            البيانات المدخلة لا تتطابق مع سجلاتنا.
+          </Alert>
+          <Form noValidate validated={validated} onSubmit={handleSubmitt}>
+            <Form.Group md="4" controlId="validationCustom01">
+              <Form.Label>الإيميل</Form.Label>
+              <Form.Control
+                required
+                type="email"
+                placeholder="الإيميل"
+                autocomplete="current-email"
+              />
+              <Form.Control.Feedback type="invalid">    قم بادخال الإيميل</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group  md="6" controlId="validationCustom02">
+              <Form.Label>كلمة المرور</Form.Label>
+              <Form.Control type="password" autocomplete="current-password" placeholder="كلمة المرور" required />
+              <Form.Control.Feedback type="invalid">
+                قم بادخال كلمة المرور
+              </Form.Control.Feedback>
+            </Form.Group>
+            <div className='forgetpassworddiv'><Link className='forgetpassword'>نسيت كلمة المرور ؟</Link></div>
+            <Modal.Footer className='buttonaddmotabari3form'>
+              <Button type="submit" className='addmotabari3buttonadd'>تسجيل الدخول
+              </Button>
+            </Modal.Footer>
+            <div className='divyoudonthavecompte'>ليس لديك حساب ؟ <Link className='signupifyoudonthave'>تسجيل حساب جديد</Link></div>
+          </Form>
+        </ModalBody>
       </Modal >
     </>
   )
