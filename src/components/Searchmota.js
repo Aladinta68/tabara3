@@ -11,8 +11,8 @@ const Searchmota = ({donors}) => {
             <Cardmota key={onedonor.id}  onedonor={onedonor} />
           )
         })
-      ) :<h2>لا يوجد متبرع</h2>
-    }
+        ) :<div  className='thereisnomotabari3'><h2>لا يوجد متبرع</h2></div>
+      }
         </div>
       )
 }

@@ -53,6 +53,10 @@
         flex-direction: column-reverse !important;
         text-align: center;
     }
+    .homemaintext .homebutton {
+        display: flex;
+        justify-content: center !important;
+    }
 }
 
 @media screen and (max-width:1200px) {
@@ -112,7 +116,7 @@
 .body {
     width: 100%;
     height: auto;
-
+    overflow: hidden;
 }
 
 .navvbarr {
@@ -182,7 +186,6 @@ button.addnewmotabari3:active{
 
 }
 button.searchblod {
-    margin-top: 5px;
     transition: all 0.5s ease-in;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border: none;
@@ -479,20 +482,18 @@ button.addnewmotabari3 img {
 }
 
 .homemaintext .homebutton {
-
     flex-flow: wrap;
-    width: 65%;
+    width: 80%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
 }
-
 .homemaintext .homebutton button {
-    margin-right: 5px;
-    width: 200px !important;
-    height: 50px !important;
+    margin-left: 30px;
+    width: 230px !important;
+    height: 55px !important;
     font-size: 20px !important;
+    margin-top: 5px;
 }
 
 .homedescrib {
@@ -569,4 +570,10 @@ option {
 
 .mb-3 {
     color: rgb(163, 38, 38) !important;
+}
+.thereisnomotabari3{
+    height: 300px !important;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -5,7 +5,7 @@ import addmota from '../components/images/addmota.png'
 import { Link } from 'react-router-dom'
 
 
-const Navb = ({adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
+const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,7 +80,7 @@ const Navb = ({adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
               <Form.Label> الدائرة</Form.Label>
-              <Form.Select name='daiira' aria-label="Default select example">
+              <Form.Select name='daiira' aria-label="Default select example" >
                 <option selected disabled>الدائرة</option>
                 {
                   dairas.length >= 1 ? (
@@ -99,7 +99,7 @@ const Navb = ({adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
                 id="email"
                 name="email"
                 type="email"
-                placeholder=""
+                placeholder="example@gmail.com"
                 autoFocus
                 required
                 autocomplete="current-email"
@@ -112,9 +112,10 @@ const Navb = ({adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
                 id="password"
                 name="password"
                 type="password"
-                placeholder=""
+                placeholder=" minimum 8 characters  at-least 1 Alphabet and 1 Number"
                 autoFocus
                 autocomplete="current-password"
+                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput6">
@@ -124,12 +125,11 @@ const Navb = ({adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
                 id="n_tel"
                 name="n_tel"
                 type="number"
-                placeholder=""
+                placeholder="...ex:05"
                 autoFocus
                 autocomplete="current-phonenumber"
               />
             </Form.Group>
-
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>

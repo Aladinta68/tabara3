@@ -55,13 +55,11 @@ const Header = ({ getdonors, wilayas, blods, getalldairaofwilaya, dairas }) => {
               <Form.Select onChange={(e) => handlewilaya(e)} name='wilaya' aria-label="Default select example" required>
                 <option value='' selected disabled>الولاية</option>
                 {
-                  wilayas.length >= 1 ? (
                     wilayas.map((wil) => {
                       return (
                         <option value={wil.number} key={wil.number}>{wil.name}</option>
                       )
-                    })
-                  ) : <option></option>
+                    })    
                 }
               </Form.Select>
             </Form.Group>
@@ -69,13 +67,11 @@ const Header = ({ getdonors, wilayas, blods, getalldairaofwilaya, dairas }) => {
               <Form.Select name='dairas' aria-label="Default select example">
                 <option selected disabled>الدائرة</option>
                 {
-                  dairas.length >= 1 ? (
                     dairas.map((dai) => {
                       return (
                         <option key={dai.number} value={dai.number}>{dai.name}</option>
                       )
                     })
-                  ) : <option></option>
                 }
               </Form.Select>
             </Form.Group>
@@ -83,13 +79,11 @@ const Header = ({ getdonors, wilayas, blods, getalldairaofwilaya, dairas }) => {
             <Form.Select name='blod' aria-label="Default select example" required>
               <option value='' selected disabled>فصيلة الدم </option>
               {
-                blods.length >= 1 ? (
                   blods.map((bld) => {
                     return (
                       <option key={bld.id} value={bld.id}>{bld.type}</option>
                     )
                   })
-                ) : <option></option>
               }
             </Form.Select>
           </Form.Group>
