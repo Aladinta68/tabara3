@@ -9,15 +9,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import "./index.css";
-
+import Particle from './components/Particle';
 
 
 function App() {
 
   const [isChecked, setIsChecked] = useState(false);
   const handleSwitchChange = () => {
-     setIsChecked(!isChecked);
- };
+    setIsChecked(!isChecked);
+  };
 
   const [listdonors, setlistdonors] = useState([]);
   const [donors, setdonors] = useState([]);
@@ -25,15 +25,15 @@ function App() {
   const [dairas, setdairas] = useState([]);
   const [blods, setblods] = useState([]);
 
-const adddonors = async (data) =>{
-  axios.post('http://127.0.0.1:8000/donors/',data)
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch(error => {
-    console.log(error);
-  });
-}
+  const adddonors = async (data) => {
+    axios.post('http://127.0.0.1:8000/donors/', data)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   const getlistdonors = async () => {
     const listdnr = await axios.get("http://127.0.0.1:8000/donors/");
@@ -76,19 +76,21 @@ const adddonors = async (data) =>{
   }, []);
 
   const body = isChecked ? "body-black" : "body-white";
- 
+
   return (
-    <div className={body} >
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<><Navb isChecked={isChecked} handleSwitchChange={handleSwitchChange} adddonors={adddonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Home isChecked={isChecked} adddonors={adddonors} getdonors={getdonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /></>} />
-          <Route path='/homeafterlogin' element={<><Navbafterlogin adddonors={adddonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Home adddonors={adddonors} getdonors={getdonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /></>} />
-          <Route path='/listeofmotabari3in' element={<><Navb isChecked={isChecked} handleSwitchChange={handleSwitchChange} adddonors={adddonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Header getdonors={getdonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Listmota listdonors={listdonors} isChecked={isChecked} /></>} />
-          <Route path='/searchmotabari3in' element={<><Navb isChecked={isChecked} handleSwitchChange={handleSwitchChange} adddonors={adddonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Header getdonors={getdonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Searchmota donors={donors}  isChecked={isChecked}/></>} />
-        </Routes>
-      </BrowserRouter>
-      <Footerr isChecked={isChecked} />
-    </div>
+    <>
+      <div className={body} >
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<><Navb isChecked={isChecked} handleSwitchChange={handleSwitchChange} adddonors={adddonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Home isChecked={isChecked} adddonors={adddonors} getdonors={getdonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /></>} />
+            <Route path='/homeafterlogin' element={<><Navbafterlogin adddonors={adddonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Home adddonors={adddonors} getdonors={getdonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /></>} />
+            <Route path='/listeofmotabari3in' element={<><Navb isChecked={isChecked} handleSwitchChange={handleSwitchChange} adddonors={adddonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Header getdonors={getdonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Listmota listdonors={listdonors} isChecked={isChecked} /></>} />
+            <Route path='/searchmotabari3in' element={<><Navb isChecked={isChecked} handleSwitchChange={handleSwitchChange} adddonors={adddonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Header getdonors={getdonors} wilayas={wilayas} dairas={dairas} blods={blods} getalldairaofwilaya={getalldairaofwilaya} /><Searchmota donors={donors} isChecked={isChecked} /></>} />
+          </Routes>
+        </BrowserRouter>
+        <Footerr isChecked={isChecked} />
+      </div>
+    </>
   );
 }
 

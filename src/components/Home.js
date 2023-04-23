@@ -6,7 +6,7 @@ import bloddonation2 from '../components/images/bloddonation2.png'
 import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade';
 import '../index.css'
-
+import Particle from './Particle'
 const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, dairas,isChecked }) => {
 
   const handleSubmit = (e) => {
@@ -32,9 +32,11 @@ const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, daira
   const homedescribleft = isChecked ? 'homedescribleft-black' : 'homedescribleft';
 
   return (
+
     <>
       <div className='Homemain'>
         <div className='homemainn'>
+        <Particle/>
           <Fade right><div className='homemainbackground'></div></Fade>
           <div className={homemaintext}>
             <Fade right><h1>تبرعك بالدم قد ينقذ حياة شخص ما!</h1></Fade>

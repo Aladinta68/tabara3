@@ -4,7 +4,7 @@ const Themeswitch = ({isChecked,handleSwitchChange}) => {
   
 
   return (
-    <Form>
+    <Form className='switchmode'>
             <Form.Check
                 type="switch"
                 id="custom-switch"
