@@ -1,26 +1,22 @@
 import React, { useState } from 'react'
 import { Button, Form, Container, Nav, Navbar, Modal, ModalBody } from 'react-bootstrap'
 import newlogo from '../components/images/newlogo.png'
-import sortir from'../components/images/sortir.png'
+import sortir from '../components/images/sortir.png'
 import addmota from '../components/images/addmota.png'
 import { Link } from 'react-router-dom'
 import Alert from 'react-bootstrap/Alert';
+import Themeswitch from './Themeswitch';
+import '../index.css'
 
+const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya,handleSwitchChange,isChecked }) => {
+  
 
-const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
-
-  const [validated, setValidated] = useState(false);
-
+  //fonction for form 2  
   const handleSubmitt = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    setValidated(true);
+    event.preventDefault();
+    setShow2(false);
   };
-
+  //fonction for form 2
   const handleSubmit = (e) => {
     const data = new FormData(e.target);
     const formData = Object.fromEntries(data.entries());
@@ -28,29 +24,35 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
     adddonors(formData);
     setShow(false);
   };
-
+  //fonction get wilaya to get daira
   const handlewilaya = (e) => {
     const getwilayaid = e.target.value;
     getalldairaofwilaya(getwilayaid)
   }
+  //use state for modal 1
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  //use state for modal 2
   const [show2, setShow2] = useState(false);
   const handleClose2 = () => setShow2(false);
   const handleShow2 = () => setShow2(true);
+
+  const navvbarr = isChecked ? 'navvbarr-black' : 'navvbarr-white';
+  const navlink2 = isChecked ? 'navlink2-black' : 'navlink2-white';
+  const navlink = isChecked ? 'navlink-black' : 'navlink-white';
   return (
     <>
       <div>
-        <Navbar bg="light" className='navvbarr' expand="lg">
+        <Navbar className={navvbarr} expand="lg">
           <Container>
             <Link to={'/'} className='navlink3'><div className='navlogo'>tabara3<img src={newlogo} /></div></Link>
+            <Themeswitch handleSwitchChange={handleSwitchChange} isChecked={isChecked} />
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Link to={'/'} className='navlink2'>الرئيسية</Link>
-                <Link to={'/listeofmotabari3in'} className='navlink' >قائمة المتبرعين</Link>
+                <Link to={'/'} className={navlink2}>الرئيسية</Link>
+                <Link to={'/listeofmotabari3in'} className={navlink} >قائمة المتبرعين</Link>
                 <Button className='addnewmotabari3' onClick={handleShow}>التسجيل كمتبرع<img src={addmota} /></Button>
                 <Button className='login' onClick={handleShow2}>  الدخول للحساب<img src={sortir} /></Button>
               </Nav>
@@ -58,27 +60,27 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
           </Container>
         </Navbar>
       </div>
-
-
       <Modal show={show} onHide={handleClose}>
         <Form onSubmit={handleSubmit}>
-
           <Modal.Header closeButton>
             <Modal.Title className='modalheader'>التسجيل كمتبرع</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <Alert variant='danger'>
+              لقد تم التسجيل من قبل بواسطة احد البيانات المدخلة.
+            </Alert>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>فصيلة الدم </Form.Label>
               <Form.Select name='blood' aria-label="Default select example" required>
                 <option value='' selected disabled>فصيلة الدم </option>
                 {
-                  blods.length >= 1 ? (
+                  (
                     blods.map((bld) => {
                       return (
                         <option key={bld.id} value={bld.id}>{bld.type}</option>
                       )
                     })
-                  ) : <option></option>
+                  )
                 }
               </Form.Select>
             </Form.Group>
@@ -87,13 +89,13 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
               <Form.Select onChange={(e) => handlewilaya(e)} name='wilaya' aria-label="Default select example" required>
                 <option value='' selected disabled>الولاية</option>
                 {
-                  wilayas.length >= 1 ? (
+                  (
                     wilayas.map((wil) => {
                       return (
                         <option value={wil.number} key={wil.number}>{wil.name}</option>
                       )
                     })
-                  ) : <option></option>
+                  )
                 }
               </Form.Select>
             </Form.Group>
@@ -102,13 +104,13 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
               <Form.Select name='daiira' aria-label="Default select example" >
                 <option selected disabled>الدائرة</option>
                 {
-                  dairas.length >= 1 ? (
+                  (
                     dairas.map((dai) => {
                       return (
                         <option key={dai.number} value={dai.number}>{dai.name}</option>
                       )
                     })
-                  ) : <option></option>
+                  )
                 }
               </Form.Select>
             </Form.Group>
@@ -153,7 +155,8 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
           <Modal.Footer className='buttonaddmotabari3form'>
             <Button type="submit" className='addmotabari3buttonadd'>التسجيل</Button>
           </Modal.Footer>
-          </Form>
+          <div className='divyoudonthavecompte'> لديك حساب ؟ <Link className='signupifyoudonthave'> تسجيل الدخول </Link></div>
+        </Form>
       </Modal >
 
       <Modal show={show2} onHide={handleClose2}>
@@ -164,8 +167,8 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
           <Alert variant='danger'>
             البيانات المدخلة لا تتطابق مع سجلاتنا.
           </Alert>
-          <Form noValidate validated={validated} onSubmit={handleSubmitt}>
-            <Form.Group md="4" controlId="validationCustom01">
+          <Form onSubmit={handleSubmitt}>
+            <Form.Group md="4" controlId="exampleForm.ControlInput1">
               <Form.Label>الإيميل</Form.Label>
               <Form.Control
                 required
@@ -173,14 +176,10 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya }) => {
                 placeholder="الإيميل"
                 autocomplete="current-email"
               />
-              <Form.Control.Feedback type="invalid">    قم بادخال الإيميل</Form.Control.Feedback>
             </Form.Group>
-            <Form.Group  md="6" controlId="validationCustom02">
+            <Form.Group md="6" controlId="exampleForm.ControlInput2">
               <Form.Label>كلمة المرور</Form.Label>
               <Form.Control type="password" autocomplete="current-password" placeholder="كلمة المرور" required />
-              <Form.Control.Feedback type="invalid">
-                قم بادخال كلمة المرور
-              </Form.Control.Feedback>
             </Form.Group>
             <div className='forgetpassworddiv'><Link className='forgetpassword'>نسيت كلمة المرور ؟</Link></div>
             <Modal.Footer className='buttonaddmotabari3form'>

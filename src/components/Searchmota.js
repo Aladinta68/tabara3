@@ -1,7 +1,10 @@
 import React from 'react'
 import Cardmota from './Cardmota'
+import '../index.css'
 
-const Searchmota = ({donors}) => {
+const Searchmota = ({donors,isChecked}) => {
+  const thereisnomotabari3 = isChecked ? 'thereisnomotabari3-black' : 'thereisnomotabari3';
+
     return (
         <div className='containerr'>
     {
@@ -11,7 +14,7 @@ const Searchmota = ({donors}) => {
             <Cardmota key={onedonor.id}  onedonor={onedonor} />
           )
         })
-        ) :<div  className='thereisnomotabari3'><h2>لا يوجد متبرع</h2></div>
+        ) :<div  className={thereisnomotabari3}><h2>لا يوجد متبرع</h2></div>
       }
         </div>
       )

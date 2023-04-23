@@ -5,9 +5,9 @@ import { Button, Form, Modal } from 'react-bootstrap'
 import bloddonation2 from '../components/images/bloddonation2.png'
 import { Link } from 'react-router-dom'
 import Fade from 'react-reveal/Fade';
+import '../index.css'
 
-
-const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, dairas }) => {
+const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, dairas,isChecked }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,12 +25,18 @@ const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, daira
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+
+  const homemaintext = isChecked ? 'homemaintext-black' : 'homemaintext';
+  const pblack = isChecked ? 'pblack-black' : 'pblack';
+  const homedescribleft = isChecked ? 'homedescribleft-black' : 'homedescribleft';
+
   return (
     <>
       <div className='Homemain'>
         <div className='homemainn'>
           <Fade right><div className='homemainbackground'></div></Fade>
-          <div className='homemaintext'>
+          <div className={homemaintext}>
             <Fade right><h1>تبرعك بالدم قد ينقذ حياة شخص ما!</h1></Fade>
             <Fade right><p>التبرع بالدم يساعد في إنقاذ مليون شخص كل عام، لأن هذا التبرع يشمل أيضًا الصفائح الدموية والبلازما وحتى دم المشيمة.</p></Fade>
             <Fade right><div className='homebutton'>
@@ -44,11 +50,11 @@ const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, daira
         <div className='homedescrib'>
           <div className='homedescribtop'>
             <Fade right><h1>الفوائد الصحية عند التبرع بالدم</h1></Fade>
-            <Fade right><p>لا يؤدي التبرع بالدم إلى تحسين حياة المتلقي فحسب، بل يساعد المتبرع أيضًا على البقاء بصحة جيدة.</p></Fade>
+            <Fade right><p className={pblack}>لا يؤدي التبرع بالدم إلى تحسين حياة المتلقي فحسب، بل يساعد المتبرع أيضًا على البقاء بصحة جيدة.</p></Fade>
           </div>
           <div className='homedescribbottm'>
             <div className='homedeback'><Fade right><img src={bloddonation2}></img></Fade></div>
-            <div className='homedescribleft'>
+            <div className={homedescribleft}>
               <ul>
                 <Fade right><li>تقليل مخازن الحديد الضارة</li></Fade>
                 <Fade right><li>الحفاظ على صحة القلب والأوعية الدموية</li></Fade>
