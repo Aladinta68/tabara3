@@ -42,7 +42,7 @@ const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, daira
             <Fade right><h1>تبرعك بالدم قد ينقذ حياة شخص ما!</h1></Fade>
             <Fade right><p>التبرع بالدم يساعد في إنقاذ مليون شخص كل عام، لأن هذا التبرع يشمل أيضًا الصفائح الدموية والبلازما وحتى دم المشيمة.</p></Fade>
             <Fade right><div className='homebutton'>
-              <Button className='addnewmotabari3' onClick={handleShow}>التسجيل كمتبرع<img src={addmota} /></Button>
+              <Button className='addnewmotabari3' onClick={handleShow}>التسجيل كمتبرع<img src={addmota} alt='addmota' /></Button>
               <Link className='linkk' to={'/listeofmotabari3in'}><Button className='searchblod'> بحاجة الى الدم</Button></Link>
             </div>
             </Fade>
@@ -55,7 +55,7 @@ const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, daira
             <Fade right><p className={pblack}>لا يؤدي التبرع بالدم إلى تحسين حياة المتلقي فحسب، بل يساعد المتبرع أيضًا على البقاء بصحة جيدة.</p></Fade>
           </div>
           <div className='homedescribbottm'>
-            <div className='homedeback'><Fade right><img src={bloddonation2}></img></Fade></div>
+            <div className='homedeback'><Fade right><img alt='bloddonnation2' src={bloddonation2}/></Fade></div>
             <div className={homedescribleft}>
               <ul>
                 <Fade right><li>تقليل مخازن الحديد الضارة</li></Fade>
@@ -82,7 +82,7 @@ const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, daira
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>فصيلة الدم </Form.Label>
             <Form.Select name='blood' aria-label="Default select example" required>
-              <option value='' selected disabled>فصيلة الدم </option>
+              <option value="blod" selected disabled>فصيلة الدم </option>
               {
                 blods.length >= 1 ? (
                   blods.map((bld) => {
@@ -97,7 +97,7 @@ const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, daira
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
             <Form.Label>الولاية</Form.Label>
             <Form.Select onChange={(e) => handlewilaya(e)} name='wilaya' aria-label="Default select example" required>
-              <option value='' selected disabled>الولاية</option>
+              <option value="wilaya" selected disabled>الولاية</option>
               {
                 wilayas.length >= 1 ? (
                   wilayas.map((wil) => {
@@ -112,7 +112,7 @@ const Home = ({ adddonors, getdonors, wilayas, blods, getalldairaofwilaya, daira
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
             <Form.Label> الدائرة</Form.Label>
             <Form.Select name='daiira' aria-label="Default select example" >
-              <option selected disabled>الدائرة</option>
+              <option value="daira" selected disabled>الدائرة</option>
               {
                 dairas.length >= 1 ? (
                   dairas.map((dai) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Form, Container, Nav, Navbar, Modal, ModalBody } from 'react-bootstrap'
 import newlogo from '../components/images/newlogo.png'
 import sortir from '../components/images/sortir.png'
@@ -41,20 +41,39 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya,handleSwi
   const navvbarr = isChecked ? 'navvbarr-black' : 'navvbarr-white';
   const navlink2 = isChecked ? 'navlink2-black' : 'navlink2-white';
   const navlink = isChecked ? 'navlink-black' : 'navlink-white';
+
+const [linkcolorHome, setLinkColorHome] = useState('');
+const [linkcolorList, setLinkColorList] = useState('');
+const [activeLink, setActiveLink] = useState('');
+
+const handleSelectLink = (link) => {
+  setActiveLink(link);
+    if (link === 'home') {
+      setLinkColorHome('red');
+      setLinkColorList('black');
+    } else if (link === 'list') {
+      setLinkColorList('red');
+      setLinkColorHome('black');
+    }
+};
+  useEffect(() => {
+    setLinkColorHome('red');  // set the Home link to red
+    setActiveLink('home');   // set the active link to Home
+  }, []);
+
   return (
     <>
       <div>
         <Navbar className={navvbarr} expand="lg">
           <Container>
-            <Link to={'/'} className='navlink3'><div className='navlogo'>tabara3<img src={newlogo} /></div></Link>
+            <Link to={'/'} className='navlink3'><div className='navlogo'>tabara3<img alt='newlogo' src={newlogo} /></div></Link>
             <Themeswitch handleSwitchChange={handleSwitchChange} isChecked={isChecked} />
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Link to={'/'} className={navlink2}>الرئيسية</Link>
-                <Link to={'/listeofmotabari3in'} className={navlink} >قائمة المتبرعين</Link>
-                <Button className='addnewmotabari3' onClick={handleShow}>التسجيل كمتبرع<img src={addmota} /></Button>
-                <Button className='login' onClick={handleShow2}>  الدخول للحساب<img src={sortir} /></Button>
+              <Link to={'/'} className={navlink2} id='home' style={{ color: activeLink === 'home' ? linkcolorHome : '' }} onClick={() => handleSelectLink('home')}>الرئيسية</Link>
+              <Link to={'/listeofmotabari3in'} className={navlink} id='list' style={{ color: activeLink === 'list' ? linkcolorList : '' }} onClick={() => handleSelectLink('list')}>قائمة المتبرعين</Link>                <Button className='addnewmotabari3' onClick={handleShow}>التسجيل كمتبرع<img alt='addmota' src={addmota} /></Button>
+                <Button className='login' onClick={handleShow2}>  الدخول للحساب<img alt='sortir' src={sortir} /></Button>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -72,7 +91,7 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya,handleSwi
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>فصيلة الدم </Form.Label>
               <Form.Select name='blood' aria-label="Default select example" required>
-                <option value='' selected disabled>فصيلة الدم </option>
+                <option value="blod" selected disabled>فصيلة الدم </option>
                 {
                   (
                     blods.map((bld) => {
@@ -87,7 +106,7 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya,handleSwi
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
               <Form.Label>الولاية</Form.Label>
               <Form.Select onChange={(e) => handlewilaya(e)} name='wilaya' aria-label="Default select example" required>
-                <option value='' selected disabled>الولاية</option>
+                <option value="wilaya" selected disabled>الولاية</option>
                 {
                   (
                     wilayas.map((wil) => {
@@ -102,7 +121,7 @@ const Navb = ({ adddonors, wilayas, dairas, blods, getalldairaofwilaya,handleSwi
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
               <Form.Label> الدائرة</Form.Label>
               <Form.Select name='daiira' aria-label="Default select example" >
-                <option selected disabled>الدائرة</option>
+                <option value="daira" selected disabled>الدائرة</option>
                 {
                   (
                     dairas.map((dai) => {

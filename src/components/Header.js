@@ -53,7 +53,7 @@ const Header = ({ getdonors, wilayas, blods, getalldairaofwilaya, dairas }) => {
           <Form onSubmit={filterby}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
               <Form.Select onChange={(e) => handlewilaya(e)} name='wilaya' aria-label="Default select example" required>
-                <option value='' selected disabled>الولاية</option>
+                <option value="wilaya" selected disabled>الولاية</option>
                 {
                     wilayas.map((wil) => {
                       return (
@@ -65,7 +65,7 @@ const Header = ({ getdonors, wilayas, blods, getalldairaofwilaya, dairas }) => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
               <Form.Select name='dairas' aria-label="Default select example">
-                <option selected disabled>الدائرة</option>
+                <option value="dairas" selected disabled>الدائرة</option>
                 {
                     dairas.map((dai) => {
                       return (
@@ -77,7 +77,7 @@ const Header = ({ getdonors, wilayas, blods, getalldairaofwilaya, dairas }) => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Select name='blod' aria-label="Default select example" required>
-              <option value='' selected disabled>فصيلة الدم </option>
+              <option value="blod" selected disabled>فصيلة الدم </option>
               {
                   blods.map((bld) => {
                     return (
